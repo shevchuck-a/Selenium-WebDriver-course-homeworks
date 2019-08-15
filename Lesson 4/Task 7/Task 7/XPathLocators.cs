@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -12,12 +14,13 @@ namespace Task_7
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        Dictionary<string, string> Handlers = new Dictionary<string, string>();
 
         [SetUp]
         public void start()
         {
             driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
         }
 
         [Test]
@@ -27,26 +30,34 @@ namespace Task_7
             driver.Manage().Cookies.DeleteAllCookies();
             driver.Manage().Cookies.AddCookie(new Cookie("LCSESSID", "7a6rrp1vf48kp4852hk9inh92h"));
             driver.Url = "http://localhost/litecart/admin/";
-
-            //driver.FindElements(By.XPath("//ul[@id='box-apps-menu']//a"));
+            Handlers.Add("HomeWindow", driver.CurrentWindowHandle);
 
             ReadOnlyCollection<IWebElement> links = driver.FindElements(By.XPath("//ul[@id='box-apps-menu']//a"));
 
             foreach (IWebElement link in links)
             {
                 link.SendKeys(Keys.Control + Keys.Enter);
-                //driver.SwitchTo().Window(driver.WindowHandles);
+                driver.SwitchTo().Window(driver.WindowHandles.Last());
+                Handlers.Add("SubMenuindow" + link, driver.CurrentWindowHandle);
+
+                ReadOnlyCollection<IWebElement> sublinks = 
+                    driver.FindElements(By.XPath("//ul[@class='docs']/li[not(contains(@class,'selected'))]/a"));
+                foreach (IWebElement sublink in sublinks)
+                {
+                    sublink.SendKeys(Keys.Control + Keys.Enter);
+                    driver.SwitchTo().Window(driver.WindowHandles.Last());
+
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("h1")));
+
+                    driver.Close();
+                    driver.SwitchTo().Window(Handlers["SubMenuindow" + link]);
+                }
+
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector("h1")));
-                driver.Navigate().Back();
-            }
 
-            //driver.FindElement(By.XPath("//span[text()='Appearence']/..")).Click();
-            //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement
-            //    (driver.FindElement(By.CssSelector("h1")), "Template"));
-
-            //driver.FindElement(By.XPath("//span[text()='Logotype']/..")).Click();
-            //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.TextToBePresentInElement
-            //    (driver.FindElement(By.CssSelector("h1")), "Logotype"));
+                driver.Close();
+                driver.SwitchTo().Window(Handlers["HomeWindow"]);
+            }   //(driver.FindElement(By.CssSelector("h1")), "Logotype"));
         }
 
         [TearDown]
