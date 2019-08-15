@@ -57,7 +57,7 @@ namespace Task_7
 
                 driver.Close();
                 driver.SwitchTo().Window(Handlers["HomeWindow"]);
-            }   //(driver.FindElement(By.CssSelector("h1")), "Logotype"));
+            }  
         }
 
         [TearDown]
