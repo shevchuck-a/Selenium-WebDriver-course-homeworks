@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XPathLocators.cs" />
+    <Compile Include="CSSLocators.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
