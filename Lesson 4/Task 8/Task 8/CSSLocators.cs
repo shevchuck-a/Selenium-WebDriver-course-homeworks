@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 namespace Task_7
 {
     [TestFixture]
-    class XPathLocators
+    class CSSLocators
     {
         private IWebDriver driver;
         private WebDriverWait wait;
