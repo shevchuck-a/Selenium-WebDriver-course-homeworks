@@ -53,56 +53,24 @@ namespace Task_9
             {
                 string enabledZones = driver.FindElement(By.XPath("//tr[@class='row'][" + i + "]/td[6]"))
                     .GetAttribute("textContent");
-                int countZones = Convert.ToInt32(enabledZones);
                 var unsortedZones = new List<string>();
-                if (countZones != 0)
+                if (enabledZones != "0")
                 {
                     driver.FindElement(By.XPath("//tr[@class='row'][" + i + "]/td[5]/a")).Click();
-                    //IList<IWebElement> zones = driver.FindElements(By.XPath("//table[@id='table-zones']//td[3]/input"));
-                    //int countZones = zones.Count;
-                    for (int j = 2; j <= ++countZones; j++)
+                    IList<IWebElement> zones = driver.FindElements(By.XPath("//table[@id='table-zones']//td[3]/input"));
+                    int countZones = zones.Count;
+                    for (int j = 2; j <= countZones; j++)
                     {
                         string zone = driver.FindElement
-                            (By.XPath("//table[@id='table-zones']//tr[" + i + "]/td[3]/input")).GetAttribute("value");
+                            (By.XPath("//table[@id='table-zones']//tr[" + j + "]/td[3]/input")).GetAttribute("value");
                         unsortedZones.Add(zone);
                     }
                     var sortedZones = new List<string>();
                     sortedZones.AddRange(unsortedZones.OrderBy(o => o));
                     Assert.IsTrue(unsortedZones.SequenceEqual(sortedZones));
-
+                    driver.Navigate().Back();
                 }
             }
-
-
-            //ReadOnlyCollection<IWebElement> rows = driver.FindElements(By.CssSelector(".row"));
-            ////System.IO.File.WriteAllLines(@"c:\Users\Admin\Documents\GitHub\FindElements.txt", rows);
-            //int countCountries = rows.Count;
-
-            //for (int i = 1; i <= countCountries; i++)
-            //{
-            //    string country = driver.FindElement(By.XPath("//tr[@class='row'][" + i + "]/td/a")).GetAttribute("text");
-            //    //countries[i] = country;
-            //}
-            //System.IO.File.WriteAllLines(@"c:\Users\Admin\Documents\GitHub\WriteLines.txt", countries);
-
-
-            //foreach (IWebElement row in rows)
-            //{
-            //    string country = row.FindElement(By.XPath("//td[5]/a")).GetAttribute("text");
-
-            //    for (int i = 0; i < countCountries; i++)
-            //    {
-
-            //        //countries[i] = country;
-            //        System.IO.File.WriteAllText(@"c:\Users\Admin\Documents\GitHub\WriteText.txt", country);
-            //    }
-            //}
-
-            //string[] sortedCountries = Array.Sort(countries);
-            //if (sortedCountries != countries)
-            //{
-            //    Console.WriteLine("Countries are not sorted");   
-            //}
         }
 
         [TearDown]
