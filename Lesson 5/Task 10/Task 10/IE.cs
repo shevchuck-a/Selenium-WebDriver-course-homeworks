@@ -1,12 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 
 namespace Task_10
 {
-    class Chrome
+    class IE
     {
         private IWebDriver driver;
         private WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace Task_10
         [SetUp]
         public void Start()
         {
-            driver = new ChromeDriver();
+            driver = new InternetExplorerDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 

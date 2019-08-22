@@ -1,12 +1,12 @@
 ﻿using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace Task_10
 {
-    class Chrome
+    class Firefox
     {
         private IWebDriver driver;
         private WebDriverWait wait;
@@ -14,7 +14,7 @@ namespace Task_10
         [SetUp]
         public void Start()
         {
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
@@ -40,7 +40,7 @@ namespace Task_10
 
             //check that Regular Price is gray (RGB values are equal)
             string regularPriceColourData = driver.FindElement(By.CssSelector("#box-campaigns .regular-price")).GetCssValue("color");
-            String[] hexRegularPriceColour = regularPriceColourData.Replace("rgba(", "").Replace(")", "").Split(',');
+            String[] hexRegularPriceColour = regularPriceColourData.Replace("rgb(", "").Replace(")", "").Split(',');
             int hexRegularPriceColour1 = Convert.ToInt32(hexRegularPriceColour[0]);
             int hexRegularPriceColour2 = Convert.ToInt32(hexRegularPriceColour[1]);
             int hexRegularPriceColour3 = Convert.ToInt32(hexRegularPriceColour[2]);
@@ -74,7 +74,7 @@ namespace Task_10
 
             //check that Price color on Product page is red (G and B from RGB are equal 0)
             string productPriceColourData = driver.FindElement(By.CssSelector(".campaign-price")).GetCssValue("color");
-            String[] hexProductPriceColour = productPriceColourData.Replace("rgba(", "").Replace(")", "").Split(',');
+            String[] hexProductPriceColour = productPriceColourData.Replace("rgb(", "").Replace(")", "").Split(',');
             int hexProductPriceColour2 = Convert.ToInt32(hexProductPriceColour[1]);
             int hexProductPriceColour3 = Convert.ToInt32(hexProductPriceColour[2]);
             Assert.AreEqual(0, hexProductPriceColour2);
@@ -82,7 +82,7 @@ namespace Task_10
 
             //check that Regular Price on Product page is gray (RGB values are equal)
             string productRegularPriceColourData = driver.FindElement(By.CssSelector(".regular-price")).GetCssValue("color");
-            String[] hexProductRegularPriceColour = productRegularPriceColourData.Replace("rgba(", "").Replace(")", "").Split(',');
+            String[] hexProductRegularPriceColour = productRegularPriceColourData.Replace("rgb(", "").Replace(")", "").Split(',');
             int hexProductRegularPriceColour1 = Convert.ToInt32(hexProductRegularPriceColour[0]);
             int hexProductRegularPriceColour2 = Convert.ToInt32(hexProductRegularPriceColour[1]);
             int hexProductRegularPriceColour3 = Convert.ToInt32(hexProductRegularPriceColour[2]);
