@@ -2,13 +2,12 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-//using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 
-namespace csharp_example
+namespace Selenium_WebDriver_course_homeworks.Lesson_7.Task_13
 {
     [TestFixture]
-    public class MyFirstTest
+    class WorkingWithCart
     {
         private IWebDriver driver;
         private WebDriverWait wait;
@@ -21,13 +20,15 @@ namespace csharp_example
         }
 
         [Test]
-        public void FirstTest()
+        public void BuyDucks()
         {
-            driver.Url = "http://www.google.com/";
-            driver.FindElement(By.Name("q")).SendKeys("webdriver");
-            //driver.FindElement(By.Name("btnG")).Click();
-            driver.FindElement(By.Name("q")).SendKeys(Keys.Enter);
-            wait.Until(ExpectedConditions.TitleIs("webdriver - Пошук Google"));
+            driver.Url = "http://localhost/litecart/en/";
+            driver.FindElement(By.ClassName("product")).Click();
+
+            driver.FindElement(By.CssSelector("[name = add_cart_product]")).Click();
+            IAlert alert = driver.SwitchTo().Alert();
+            alert.Accept();
+
         }
 
         [TearDown]

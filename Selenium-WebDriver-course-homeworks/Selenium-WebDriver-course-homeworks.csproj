@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D63D02A-1B6A-44FB-9FA8-292679118298}</ProjectGuid>
+    <ProjectGuid>{FE52FC2A-84D5-4EBA-AD4C-26808255BC6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Task_7</RootNamespace>
-    <AssemblyName>Task 7</AssemblyName>
+    <RootNamespace>Selenium_WebDriver_course_homeworks</RootNamespace>
+    <AssemblyName>Selenium-WebDriver-course-homeworks</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,13 +63,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lesson 2\Exercise 1\FirstUnitTest.cs" />
+    <Compile Include="Lesson 2\Exercise 3\litecart login.cs" />
+    <Compile Include="Lesson 3\AddingCookie\AddAdminCookie.cs" />
+    <Compile Include="Lesson 3\Task 4\Chrome.cs" />
+    <Compile Include="Lesson 3\Task 4\Edge.cs" />
+    <Compile Include="Lesson 3\Task 4\Firefox.cs" />
+    <Compile Include="Lesson 3\Task 4\IE.cs" />
+    <Compile Include="Lesson 3\Task 5\OldFirefoxAdminLogin.cs" />
+    <Compile Include="Lesson 3\Task 6\NightlyFirefoxAdminLogin.cs" />
+    <Compile Include="Lesson 4\Task 7\SideMenuTestInOneWindow.cs" />
+    <Compile Include="Lesson 4\Task 7\SideMenuTestUsingNewWindows.cs" />
+    <Compile Include="Lesson 4\Task 8\CSSLocators.cs" />
+    <Compile Include="Lesson 5\Task 10\Chrome.cs" />
+    <Compile Include="Lesson 5\Task 10\Firefox.cs" />
+    <Compile Include="Lesson 5\Task 10\IE.cs" />
+    <Compile Include="Lesson 5\Task 9\AlpabeticList.cs" />
+    <Compile Include="Lesson 5\Task 9\GeoZones.cs" />
+    <Compile Include="Lesson 6\Task 11\UserRegistration.cs" />
+    <Compile Include="Lesson 6\Task 12\AddingProducts.cs" />
+    <Compile Include="Lesson 7\Task 13\WorkingWithCart.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SideMenuTestInOneWindow.cs" />
-    <Compile Include="SideMenuTestUsingNewWindows.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
