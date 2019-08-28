@@ -31,7 +31,6 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_8.Task_14
             driver.FindElement(By.Name("password")).SendKeys("admin");
             driver.FindElement(By.Name("login")).Click();
             driver.Url = "http://localhost/litecart/admin/?app=countries&doc=countries";
-            //Handlers.Add("HomeWindow", driver.CurrentWindowHandle);
             string mainWindow = driver.CurrentWindowHandle;
             ICollection<string> oldWindows = driver.WindowHandles;
             driver.FindElement(By.XPath("//tr[@class='row']/td[5]/a")).Click();
@@ -39,13 +38,21 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_8.Task_14
             foreach (var externalLink in externalLinks)
             {
                 externalLink.Click();
-                //var nonintersect = array2.Except(array1);
                 ICollection<string> newWindows = driver.WindowHandles;
-                var newWindowId = newWindows.Except(oldWindows).ToList();
-                //string newWindowId = newWindow[0];
-                string newWindow = wait.Until();
-                driver.FindElement(By.XPath("//tr[@class='row']/td[5]/a")).Click();
+                var newWindowList = newWindows.Except(oldWindows).ToList();
+                string newWindow = newWindowList[0];
+                wait.Until(d => d.WindowHandles.Count() == 2);
+                driver.SwitchTo().Window(newWindow);
+                driver.Close();
+                driver.SwitchTo().Window(mainWindow);
             }
+        }
+
+        [TearDown]
+        public void stop()
+        {
+            driver.Quit();
+            driver = null;
         }
     }
 }
