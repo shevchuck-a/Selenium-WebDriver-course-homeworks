@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lesson 10\Task 17\BrowserLog.cs" />
     <Compile Include="Lesson 2\Exercise 1\FirstUnitTest.cs" />
     <Compile Include="Lesson 2\Exercise 3\litecart login.cs" />
     <Compile Include="Lesson 3\AddingCookie\AddAdminCookie.cs" />
