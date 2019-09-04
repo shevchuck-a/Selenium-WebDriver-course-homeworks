@@ -5,6 +5,9 @@ using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Support.UI;
 
 namespace Selenium_WebDriver_course_homeworks.Lesson_10.Task_17
@@ -19,7 +22,10 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_10.Task_17
         [SetUp]
         public void start()
         {
-            driver = new ChromeDriver();
+            //driver = new ChromeDriver();
+            //driver = new FirefoxDriver();
+            //driver = new InternetExplorerDriver();
+            driver = new EdgeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
         }
 
@@ -27,7 +33,8 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_10.Task_17
         public void BrowserLogOutput()
         {
             driver.Url = "http://localhost/litecart/admin/";
-            Console.WriteLine(driver.Manage().Logs.AvailableLogTypes);
+            //Console.WriteLine(driver.Manage().Logs.AvailableLogTypes);
+            Console.WriteLine(driver.Manage().Logs.GetLog("browser"));
             driver.FindElement(By.Name("username")).SendKeys("admin");
             driver.FindElement(By.Name("password")).SendKeys("admin");
             driver.FindElement(By.Name("login")).Click();
