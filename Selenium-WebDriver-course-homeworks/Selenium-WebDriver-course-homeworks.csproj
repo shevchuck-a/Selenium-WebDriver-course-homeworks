@@ -93,7 +93,6 @@
     <Compile Include="Lesson 7\Task 13\WorkingWithCart.cs" />
     <Compile Include="Lesson 8\Task 14\NavigationBetweenWindows.cs" />
     <Compile Include="Lesson 9\Task 16\CloudGrid.cs" />
-    <Compile Include="Lesson 9\Task 16\CloudGrid2.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
