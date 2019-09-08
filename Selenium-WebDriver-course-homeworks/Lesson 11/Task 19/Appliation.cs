@@ -1,5 +1,4 @@
 ﻿using System;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
@@ -10,26 +9,33 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_11.Task_19
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+        private MainPage mainPage;
+        private ProductPage productPage;
 
         public Appliation()
         {
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            mainPage = new MainPage(driver);
+            productPage = new ProductPage(driver);
         }
 
         public void Quit() { driver.Quit(); }
 
         public void AddProductsToCart(int i)
         {
-            //driver.Url = "https://litecart.stqa.ru/en/";
-            driver.FindElement(By.ClassName("product")).Click();
+            mainPage.Open();
+            mainPage.OpenProduct();
 
-            if (IsElementPresent(By.CssSelector("[name=\"options[Size]\"]")))
-            {
-                driver.FindElement(By.CssSelector("[name=\"options[Size]\"]")).Click();
-                driver.FindElement(By.CssSelector("[name=\"options[Size]\"] option:nth-child(2)")).Click();
-            }
-            driver.FindElement(By.CssSelector("[name = add_cart_product]")).Click();
+            //if (IsElementPresent(By.CssSelector("[name=\"options[Size]\"]")))
+            //{
+            //    driver.FindElement(By.CssSelector("[name=\"options[Size]\"]")).Click();
+            //    driver.FindElement(By.CssSelector("[name=\"options[Size]\"] option:nth-child(2)")).Click();
+            //}
+            //driver.FindElement(By.CssSelector("[name = add_cart_product]")).Click();
+            productPage.AddToCart();
+            //wait.Until(ExpectedConditions.Equals(was + 1, thus));
+
 
             IWebElement cart = driver.FindElement(By.CssSelector("#cart .content .quantity"));
             string count = Convert.ToString(i);

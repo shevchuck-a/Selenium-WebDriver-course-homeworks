@@ -85,6 +85,7 @@
     <Compile Include="Lesson 11\Task 19\MainPage.cs" />
     <Compile Include="Lesson 11\Task 19\PageObject.cs" />
     <Compile Include="Lesson 11\Task 19\Pages.cs" />
+    <Compile Include="Lesson 11\Task 19\ProductPage.cs" />
     <Compile Include="Lesson 11\Task 19\TestBase.cs" />
     <Compile Include="Lesson 2\Exercise 1\FirstUnitTest.cs" />
     <Compile Include="Lesson 2\Exercise 3\litecart login.cs" />

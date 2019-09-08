@@ -8,10 +8,15 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_11.Task_19
     {
         public MainPage(IWebDriver driver) : base(driver) { }
 
-        internal MainPage Open()
+        internal void Open()
         {
             driver.Url = "https://litecart.stqa.ru/en/";
-            return this;
+        }
+
+        internal void OpenProduct()
+        {
+            driver.FindElement(By.ClassName("product")).Click();
+            wait.Until(d => d.FindElement(By.ClassName("sku")));
         }
     }
 }
