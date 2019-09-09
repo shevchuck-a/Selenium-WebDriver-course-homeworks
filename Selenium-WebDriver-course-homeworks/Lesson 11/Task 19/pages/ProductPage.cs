@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Selenium_WebDriver_course_homeworks.Lesson_11.Task_19
 {
-    internal class ProductPage :Page
+    internal class ProductPage : Page
     {
         public ProductPage(IWebDriver driver) : base(driver) { }
 
@@ -24,22 +24,9 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_11.Task_19
                 driver.FindElement(By.CssSelector("[name=\"options[Size]\"] option:nth-child(2)")).Click();
             }
             driver.FindElement(By.CssSelector("[name = add_cart_product]")).Click();
-            int thus = CheckCartCount();
-            //wait.Until(d => d.)
-            //wait.Until(ExpectedConditions.Equals(was + 1, thus));
-        }
-
-        private bool IsElementPresent(By by)
-        {
-            try
-            {
-                driver.FindElement(by);
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
+            IWebElement cart = driver.FindElement(By.CssSelector("#cart .content .quantity"));
+            string thus = Convert.ToString(++was);
+            wait.Until(ExpectedConditions.TextToBePresentInElement(cart, thus));
         }
     }
 }

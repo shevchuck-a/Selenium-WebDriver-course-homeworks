@@ -15,5 +15,18 @@ namespace Selenium_WebDriver_course_homeworks.Lesson_11.Task_19
             this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
         }
+
+        protected bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
     }
 }
