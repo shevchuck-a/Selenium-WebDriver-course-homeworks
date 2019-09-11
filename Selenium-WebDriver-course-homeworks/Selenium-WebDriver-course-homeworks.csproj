@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Lesson 10\Task 17\BrowserLog.cs" />
+    <Compile Include="Lesson 10\Task 18\UsingProxy.cs" />
     <Compile Include="Lesson 11\Task 19\app\Application.cs" />
     <Compile Include="Lesson 11\Task 19\pages\CartPage.cs" />
     <Compile Include="Lesson 11\Task 19\pages\MainPage.cs" />
